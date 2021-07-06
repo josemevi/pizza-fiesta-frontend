@@ -104,6 +104,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pizza-fiesta-frontend"
+    }
+  },
+  "defaultProject": "pizza-fiesta-frontend",
+  "cli": {
+    "analytics": "769c0aed-12f5-46a8-8036-f1dd2c285f6b"
+  }
 }
