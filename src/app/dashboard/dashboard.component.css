@@ -7,11 +7,11 @@
 }
 
 .caption-bg{
-    background-color: #E2001A;
+    background-color: var(--red);
 }
 
 .info {
-    background-color: #E2001A;
+    background-color: var(--red);
     height: 100px;
     color: white;
 

@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="card border-danger">
+          <div class="card-header bg-danger text-white text-center">Crea tu cuenta</div>
+          <div class="card-body">
+  
+            <div class="row justify-content-center">
+  
+              <div class="mb-3 col-sm-6">
+                <label for="username" class="form-label fw-bold">Nombre de Usuario *</label>
+                <input type="text" class="form-control" id="username"
+                 placeholder="Algo único y original"
+                 [(ngModel)]="userData.username" autofocus required>
+              </div>
+  
+            </div>
+  
+            <div class="row justify-content-center">
+  
+              <div class="mb-3 col-sm-6">
+                <label for="email" class="form-label fw-bold">Correo Electronico</label>
+                <input type="email" class="form-control" id="email" 
+                placeholder="El de siempre" [(ngModel)]="userData.email" required>
+              </div>
+  
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="mb-3 col-sm-6">
+                  <label for="password" class="form-label fw-bold">Contraseña *</label>
+                  <input type="password" class="form-control" id="password" 
+                  placeholder="No se la cuentes a nadie" [(ngModel)]="userData.password" required>
+                </div>
+    
+            </div>
+
+            <div class="row justify-content-center">
+  
+                <div class="mb-3 col-sm-6">
+                  <label for="phone" class="form-label fw-bold">Teléfono</label>
+                  <input type="text" class="form-control" id="phone"
+                   placeholder="No te vamos a escribir a ws ;)" max="20"
+                   [(ngModel)]="userData.phone">
+                </div>
+    
+            </div>
+
+            <div class="row justify-content-center">
+  
+                <div class="mb-3 col-sm-6">
+                  <label for="phone" class="form-label fw-bold">Dirección</label>
+                  <textarea class="form-control" id="direction"
+                   placeholder="Justo como en tu DNI :D"
+                   [(ngModel)]="userData.direction"></textarea>
+                </div>
+    
+            </div>
+  
+            <div class="mb-3 col-sm-12 text-center">
+
+                <span class="form-text">Los campos marcados con * son obligatorios</span><br>
+                <span class="form-text mb-4">Como el trabajo... :(<br></span><br>
+
+                <span>¿Ya tienes cuenta?</span><br>
+                <a routerLink="/login" class="text-center text-danger">Identifícate aquí</a>
+  
+            </div>
+  
+            <div class="mb-3 col-sm-12 text-center">
+  
+              <button (click)="register()" class="btn btn-danger col-sm-6">¡Anótame!</button>
+  
+            </div>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

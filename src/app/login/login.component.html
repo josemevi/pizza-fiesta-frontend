@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="card border-danger">
+        <div class="card-header bg-danger text-white text-center">Identifícate</div>
+        <div class="card-body">
+
+          <div class="row justify-content-center">
+
+            <div class="mb-3 col-sm-6">
+              <label for="username" class="form-label fw-bold">Usuario o Correo</label>
+              <input type="text" class="form-control" id="username"
+               placeholder="Juanito667 o juanito667@correo.com"
+               [(ngModel)]="userData.username" autofocus required>
+            </div>
+
+          </div>
+
+          <div class="row justify-content-center">
+
+            <div class="mb-3 col-sm-6">
+              <label for="password" class="form-label fw-bold">Contraseña</label>
+              <input type="password" class="form-control" id="password" 
+              placeholder="*******" [(ngModel)]="userData.password" required>
+            </div>
+
+          </div>
+
+          <div class="mb-3 col-sm-12 text-center">
+
+            <span>¿No tienes cuenta?</span><br>
+            <a routerLink="/register" class="text-center text-danger"> Regístrate aquí</a>
+
+          </div>
+
+          <div class="mb-3 col-sm-12 text-center">
+
+            <button (click)="login()" class="btn btn-danger col-sm-6">¡Que Empiece la Fiesta!</button>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
