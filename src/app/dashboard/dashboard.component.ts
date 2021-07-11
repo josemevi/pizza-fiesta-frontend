@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,12 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  deletePizza(id: any, name: any){
+    
+    confirm("¿Deseas borrar "+name+ " permanentemente?");
+
   }
 
 }

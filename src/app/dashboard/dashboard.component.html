@@ -70,6 +70,29 @@
                                 <p class="card-text">This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer.</p>
                                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                                <button type="button" class="btn btn-danger" [routerLink]="['/pizzas/details/1']">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    Ver
+                                </button>
+
+                                <div class="row my-2">
+                                    <div class="col-5">
+
+                                        <button type="button" class="btn btn-success">
+                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                            Añadir
+                                        </button>
+                                    </div>
+                                    <div class="col-5">
+                                        <button type="button" class="btn btn-secondary"
+                                        (click)="deletePizza('id', 'pizza')">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                            Borrar
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -149,10 +172,12 @@
     <div class="container-fluid info d-flex">
 
         <div class="my-4 d-flex">
-            <img src="https://image.flaticon.com/icons/png/512/1205/1205772.png" alt="pizza fiesta logo" width="50" height="50" class="d-inline-block align-text-top">
+            <img src="https://image.flaticon.com/icons/png/512/1205/1205772.png" alt="pizza fiesta logo" width="50"
+                height="50" class="d-inline-block align-text-top">
             <h3 class="my-1">¡Pizza Fiesta!</h3>
-            
-            <img src="https://image.flaticon.com/icons/png/512/203/203059.png" alt="spain flag" width="50" height="50" class="ms-4">
+
+            <img src="https://image.flaticon.com/icons/png/512/203/203059.png" alt="spain flag" width="50" height="50"
+                class="ms-4">
             <h4 class="my-1">922 66 94 20</h4>
 
             <div class="ms-5">
@@ -162,15 +187,14 @@
                     <i class="fa fa-facebook-official ms-5" aria-hidden="true"></i>
 
                 </h1>
-                
+
             </div>
-            
+
 
         </div>
 
-        
-           
+
+
 
     </div>
 </div>
-
