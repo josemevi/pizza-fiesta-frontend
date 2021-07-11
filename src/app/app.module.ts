@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
+import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
     LoginComponent,
     RegisterComponent,
     PizzasComponent,
-    PizzaCreateComponent
+    PizzaCreateComponent,
+    PizzaDetailsComponent
   ],
   imports: [
     BrowserModule,

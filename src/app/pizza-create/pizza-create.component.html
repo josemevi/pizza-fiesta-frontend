@@ -1,3 +1,98 @@
-<p>
-  pizza-create works!
-</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card border-danger">
+        <div class="card-header bg-danger text-white text-center">Crea tu Pizza</div>
+        <div class="card-body">
+
+          <div class="row justify-content-center">
+
+            <div class="mb-3 col-sm-6">
+              <label for="username" class="form-label fw-bold">Nombre *</label>
+              <input type="text" class="form-control" id="name" placeholder="Algo único y original, como tu username"
+                [(ngModel)]="pizzaData.name" autofocus required>
+            </div>
+
+          </div>
+
+          <div class="row justify-content-center">
+
+            <div class="mb-3 col-sm-6">
+              <label for="phone" class="form-label fw-bold">Descripción</label>
+              <textarea class="form-control" id="description"
+                placeholder="¿Como describirias la mejor invención del mundo?"
+                [(ngModel)]="pizzaData.description"></textarea>
+            </div>
+
+          </div>
+
+          <div class="row justify-content-center">
+
+            <div class="mb-3 col-sm-6">
+              <label for="password" class="form-label fw-bold">Ingredientes *</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Azucar + Flores + Colores +"
+                  aria-label="Azucar + Flores + Colores +" aria-describedby="ingredients"
+                  [(ngModel)]="ingredient" (keydown.enter)="onKeydown($event)">
+                <button class="btn btn-success" type="button" id="ingredients" 
+                (click)="addIngredient()">+</button>
+              </div>
+              <span class="form-text mb-4">Escribe un ingrediente a la vez y presiona el boton "+" o presiona enter.</span>
+
+              <div class="row">
+
+                <div *ngFor="let i of pizzaData.ingredients" class="col-sm">
+
+                  <button class="btn btn-danger  badge ingredients mb-1" (click)="removeIngredient()">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i> {{i}}
+                  </button>
+
+                </div>
+
+              </div>
+
+              <span class="form-text mb-4">Para eliminar un ingrediente presiona sobre el mismo.</span>
+
+            </div>
+
+
+            <div class="row justify-content-center">
+
+              <div class="mb-3 col-sm-6">
+                <label for="phone" class="form-label fw-bold">Valor *</label>
+                <input type="number" class="form-control" id="phone" placeholder="Seguro que invaluable"
+                  [(ngModel)]="pizzaData.value">
+              </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+
+              <div class="mb-3 col-sm-6">
+                <label for="phone" class="form-label fw-bold">Foto</label>
+                <input type="text" class="form-control" id="phone" placeholder="URL de la foto"
+                  [(ngModel)]="pizzaData.photo">
+              </div>
+
+            </div>
+
+
+
+            <div class="mb-3 col-sm-12 text-center">
+
+              <span class="form-text">Los campos marcados con * son obligatorios</span><br>
+
+            </div>
+
+            <div class="mb-3 col-sm-12 text-center">
+
+              <button (click)="create()" class="btn btn-danger col-sm-6">Crear Obra Maestra</button>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
