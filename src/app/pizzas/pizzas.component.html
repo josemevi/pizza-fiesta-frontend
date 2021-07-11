@@ -25,7 +25,28 @@
                             <p class="card-text">This is a wider card with supporting text below as a natural
                                 lead-in to additional content. This content is a little bit longer.</p>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <button type="button" class="btn btn-danger rounded-0">Detalles</button>
+                            
+                            <button type="button" class="btn btn-danger">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                Ver
+                            </button>
+
+                            <div class="row my-2">
+                                <div class="col-5">
+
+                                    <button type="button" class="btn btn-success">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                        Añadir
+                                    </button>
+                                </div>
+                                <div class="col-5">
+                                    <button type="button" class="btn btn-secondary"
+                                    (click)="deletePizza('id', 'pizza')">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        Borrar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

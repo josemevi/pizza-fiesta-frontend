@@ -35,8 +35,64 @@
     <div class="d-flex float-end">
       
       <a routerLink="/login" class="btn btn-outline-success me-4"><i class="fa fa-user" aria-hidden="true"></i></a>
-      <button class="btn btn-outline-danger me-4"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+      <button class="btn btn-outline-danger me-4"  
+      data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </nav>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cesta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <img src="" alt="">
+                </td>
+                <td>prueba</td>
+                <td>100</td>
+                <td> 2</td>
+                <td>200</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="justify-content-center d-flex">
+            <span> <strong>Total:</strong> 200</span>
+          </div>
+      </div>
+
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fa fa-times-circle" aria-hidden="true"></i>
+           Close
+        </button>
+        <button type="button" class="btn btn-danger">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+           Realizar Pedido
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

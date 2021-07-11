@@ -12,4 +12,10 @@ export class PizzasComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deletePizza(id: any, name: any){
+    
+    confirm("¿Deseas borrar "+name+ " permanentemente?");
+
+  }
+
 }
