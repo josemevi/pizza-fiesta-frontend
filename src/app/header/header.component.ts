@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { SessionService } from "../services/session.service";
 //import { AuthService  } from "../usuarios/auth.service";
 
 @Component({
@@ -9,17 +10,34 @@ import Swal from 'sweetalert2';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    title: string = 'App Angular'
+    
 
-    constructor(private router: Router){
+
+    constructor(private router: Router,
+                public sessionService: SessionService){
 
     }
 
-    // logout(): void{
-    //     Swal.fire("Has Cerrado Sesión", `Adios ${this.authService.usuario.username}`, "success");
-    //     this.authService.logout();        
-    //     this.router.navigate(['/login']);
-    // }
+
+    logout(){
+
+        Swal.fire({
+            title: '¿Te vas tan pronto?',
+            text: "¡Apenas estabamos empezando!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#E2001A',
+            cancelButtonColor: '#db5bd',
+            confirmButtonText: 'Si, deje la estufa encendida',
+            cancelButtonText: '¡No, Espera!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+      
+                this.sessionService.deleteSession();
+            }
+          })
+        
+      }
  
 }
 

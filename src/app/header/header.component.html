@@ -30,16 +30,32 @@
           </ul>
         </li>
       </ul> -->
+
+      <div class="d-flex float-end">
+      
+        <button *ngIf="!sessionService.getSession()" routerLink="/login" class="btn btn-outline-success">
+          <i class="fa fa-user" aria-hidden="true"></i> Identificate
+        </button>
+
+        <button *ngIf="sessionService.getSession()" class="btn btn-outline-danger me-2"  
+        data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cesta
+        </button>
+        <!-- Default dropstart button -->
+        <div *ngIf="sessionService.getSession()" class="btn-group dropstart">
+          <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user" aria-hidden="true"></i> {{sessionService.getSession().username}}
+          </button>
+          <ul class="dropdown-menu">
+            <button class="dropdown-item" type="submit" (click)="logout()">Cerrar Sesión</button>
+          </ul>
+        </div>
+  
+  
+      </div>
       
     </div>
-    <div class="d-flex float-end">
-      
-      <a routerLink="/login" class="btn btn-outline-success me-4"><i class="fa fa-user" aria-hidden="true"></i></a>
-      <button class="btn btn-outline-danger me-4"  
-      data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      </button>
-    </div>
+    
   </div>
 </nav>
 
