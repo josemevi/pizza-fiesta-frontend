@@ -1,0 +1,7 @@
+img {
+
+    /* width: 160px; */
+    cursor: pointer;
+    height: 500px;
+    object-fit: cover;
+}

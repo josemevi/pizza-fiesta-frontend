@@ -1,0 +1,8 @@
+.thumbnail {
+
+    width: 160px;
+    cursor: pointer;
+    height: 400px;
+    object-fit: cover;
+    
+}

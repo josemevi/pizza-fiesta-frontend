@@ -1,29 +1,29 @@
 <div class="card bg-light">
-  <div class="card-header">Pizza: Detalles</div>
+  <div class="card-header">Pizza: <span class="text-danger">{{pizza.name}}</span> Detalles</div>
   <div class="card-body">
-      <!-- <h4 class="card-title">
-          <a [routerLink]="['/pizzas']" class="btn btn-outline-danger btn-xs">
+      <h4 class="card-title">
+          <button onclick="window.history.back()" class="btn btn-outline-danger btn-xs">
               <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver
-          </a>
-      </h4> -->
+          </button>
+      </h4>
 
-      <div class="row">
+      <div class="row justify-content-center">
 
-        <img src="" alt="">
+        <img [src]="pizza.photo" alt="Pizza creado por usuario">
 
       </div>
 
       <ul class="list-group my-2">
 
-          <li class="list-group-item list-group-item-danger">Nombre</li>
-          <li class="list-group-item">Nombre: </li>
-          <li class="list-group-item">Descripción: </li>
-          <li class="list-group-item">Ingredientes: </li>
-          <li class="list-group-item">Valor: </li>
-          <li class="list-group-item">Creado Por: </li>
-          <li class="list-group-item">Creado El: </li>
-          <li class="list-group-item">Actualizado Por: </li>
-          <li class="list-group-item">Actualizado El: </li>
+          <li class="list-group-item bg-danger text-center text-white"><strong>{{pizza.name}}</strong></li>
+          <li class="list-group-item"> <strong class="text-danger">Nombre: </strong> {{pizza.name}}</li>
+          <li class="list-group-item"> <strong class="text-danger">Descripción: </strong> {{pizza.description}} </li>
+          <li class="list-group-item"> <strong class="text-danger">Ingredientes: </strong> {{pizza.ingredients}}</li>
+          <li class="list-group-item"> <strong class="text-danger">Precio: </strong> {{pizza.value}}€</li>
+          <li class="list-group-item"> <strong class="text-danger">Creado Por: </strong> {{pizza.created_by_username}} </li>
+          <li class="list-group-item"> <strong class="text-danger">Creado El: </strong> {{pizza.created_at}}</li>
+          <!-- <li class="list-group-item">Actualizado Por: {{pizza.updated_by}} </li>
+          <li class="list-group-item">Actualizado El: {{pizza.updated_at}} </li> -->
 
       </ul>
 
@@ -33,6 +33,12 @@
             <button type="button" class="btn btn-success">
                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                 Añadir
+            </button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-warning" [routerLink]="['/pizzas/edit/',pizza.id]">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Editar
             </button>
         </div>
         <div class="col-2">

@@ -56,120 +56,67 @@
 
         <div class="row justify-content-center my-2">
 
-            <div class="col-sm-6">
+            <div *ngFor="let pizza of lastPizzas" class="col-sm-6">
 
                 <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
+                    <div class="row">
                         <div class="col-md-4">
-                            <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1431&q=80"
-                                class="img-fluid rounded-start" alt="...">
+                            <img [src]="pizza.photo"
+                                class="img-fluid rounded-start thumbnail" alt="Pizza creado por usuario">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <h5 class="card-title text-capitalize">{{pizza.name}}</h5>
+                                <p class="card-text text-capitalize">{{pizza.description}}</p>
 
-                                <button type="button" class="btn btn-danger" [routerLink]="['/pizzas/details/1']">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                    Ver
-                                </button>
+                                
+                                <span class="text-center text-danger">{{pizza.value}}€</span>
+                                <p class="card-text"><small class="text-muted">{{pizza.created_at | date }}</small></p>
+                                
+                                <hr>
 
-                                <div class="row my-2">
+                                <div class="row my-4">
                                     <div class="col-5">
+                                        <button type="button" class="btn btn-danger" [routerLink]="['/pizzas/details/',pizza.id]">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            Ver
+                                        </button>
+                                    </div>
 
-                                        <button type="button" class="btn btn-success">
+                                    <div class="col-5">
+                                        <button type="button" class="btn btn-warning" [routerLink]="['/pizzas/edit/',pizza.id]">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            Editar
+                                        </button>
+                                    </div>                                    
+                                </div>
+
+                                <div class="row my-4">
+                                    <div class="col-5">
+                                        <button type="button" class="btn btn-success" (click)="addToCart(pizza.id)">
                                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                             Añadir
                                         </button>
                                     </div>
                                     <div class="col-5">
+                                        
                                         <button type="button" class="btn btn-secondary"
-                                        (click)="deletePizza('id', 'pizza')">
+                                        (click)="deletePizza(pizza.id, pizza.name)">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                             Borrar
                                         </button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <div class="col-sm-6">
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1431&q=80"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-sm-6">
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1431&q=80"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-sm-6">
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1431&q=80"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
-
         </div>
     </div>
-    <!-- info -->
 
-    <div class="container-fluid info d-flex">
+    <!-- info -->
+    <div class="container info d-flex">
 
         <div class="my-4 d-flex">
             <img src="https://image.flaticon.com/icons/png/512/1205/1205772.png" alt="pizza fiesta logo" width="50"
@@ -180,7 +127,7 @@
                 class="ms-4">
             <h4 class="my-1">922 66 94 20</h4>
 
-            <div class="ms-5">
+            <div class="ms-5 d-flex">
                 <h1 class="ms-5">
                     <i class="fa fa-twitter-square ms-5" aria-hidden="true"></i>
                     <i class="fa fa-instagram ms-5" aria-hidden="true"></i>

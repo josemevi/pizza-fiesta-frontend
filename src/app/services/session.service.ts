@@ -15,7 +15,7 @@ export class SessionService {
 
   }
 
-  getSession(){
+  getSession(): any{
 
     let session: any = sessionStorage.getItem("userData");
 
@@ -27,11 +27,27 @@ export class SessionService {
 
   }
 
-  deleteSession(){
+  redirect(): void {
+    Swal.fire("¿Quién eres?", "Debes identificarte antes de realizar algo","error");
+    this.router.navigate(['/login']);
+  }
+
+  validateSession(): Boolean{
+    let status = false;
+      if(this.getSession()){
+        status = true;
+      }else {
+        status = false;
+        this.redirect();
+      }
+      return status;
+  }
+
+  deleteSession(): void{
 
     sessionStorage.clear();
     Swal.fire("Adiós","¡Esperamos volver a ver tus creaciones pronto!","info")
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
 
   }
 

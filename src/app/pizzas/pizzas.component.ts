@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PizzasService } from "../services/pizzas.service";
+import { SessionService } from "../services/session.service";
+import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-pizzas',
   templateUrl: './pizzas.component.html',
@@ -8,12 +10,17 @@ import Swal from 'sweetalert2';
 })
 export class PizzasComponent implements OnInit {
 
-  constructor() { }
+  pizzas: any = [];
+
+  constructor(private router: Router,
+    public sessionService: SessionService,
+    private pizzasService: PizzasService) { }
 
   ngOnInit(): void {
+    this.getPizzas();
   }
 
-  deletePizza(id: any, name: any){
+  deletePizza(id: any, name: any): void{
 
     Swal.fire({
       title: '¿Estás Segur@?',
@@ -38,6 +45,19 @@ export class PizzasComponent implements OnInit {
       }
     })
 
+  }
+
+  getPizzas(): void{
+    this.pizzasService.getPizzas()
+    .subscribe(response => {
+
+      this.pizzas = response.pizzaData;
+
+    })
+  }
+
+  addToCart(pizzaId: any): void {
+    console.log(pizzaId);
   }
 
 }

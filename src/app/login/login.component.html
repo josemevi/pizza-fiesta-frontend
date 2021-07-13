@@ -21,7 +21,8 @@
             <div class="mb-3 col-sm-6">
               <label for="password" class="form-label fw-bold">Contraseña</label>
               <input type="password" class="form-control" id="password" 
-              placeholder="*******" [(ngModel)]="userData.password" required>
+              placeholder="*******" [(ngModel)]="userData.password"
+              (keydown.enter)="onKeydown($event)" required>
             </div>
 
           </div>

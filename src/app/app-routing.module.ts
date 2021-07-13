@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'pizzas', component: PizzasComponent},
   {path: 'pizzas/create', component: PizzaCreateComponent},
+  {path: 'pizzas/edit/:id', component: PizzaCreateComponent},
   {path: 'pizzas/details/:id', component: PizzaDetailsComponent},
 ];
 

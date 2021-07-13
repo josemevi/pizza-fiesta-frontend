@@ -4,6 +4,11 @@
       <div class="card border-danger">
         <div class="card-header bg-danger text-white text-center">Crea tu Pizza</div>
         <div class="card-body">
+          <h4 class="card-title">
+            <button onclick="window.history.back()" class="btn btn-outline-danger btn-xs">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Volver
+            </button>
+          </h4>
 
           <div class="row justify-content-center">
 
@@ -88,7 +93,8 @@
 
             <div class="mb-3 col-sm-12 text-center">
 
-              <button (click)="create()" class="btn btn-danger col-sm-6">Crear Obra Maestra</button>
+              <button *ngIf="!editing" (click)="create()" class="btn btn-danger col-sm-6">Crear Obra Maestra</button>
+              <button *ngIf="editing" (click)="edit()" class="btn btn-danger col-sm-6">Editar Obra Maestra</button>
 
             </div>
 
