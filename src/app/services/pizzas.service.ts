@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from "../../environments/environment";
 
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
@@ -65,9 +65,9 @@ export class PizzasService {
     )
   }
 
-  deletePizza(id: any): Observable<any> {
+  deletePizza(id: any, user_id: any): Observable<any> {
     console.log(`${this.apiPath}deletePizza.php?id=${id}`);
-    return this.http.delete(`${this.apiPath}deletePizza.php?id=${id}`).pipe(
+    return this.http.delete(`${this.apiPath}deletePizza.php?id=${id}&user_id=${user_id}`).pipe(
       catchError(e => {
         console.error(e.error);
         return throwError(e);

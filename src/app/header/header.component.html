@@ -37,12 +37,14 @@
           <i class="fa fa-user" aria-hidden="true"></i> Identificate
         </button>
 
-        <button *ngIf="sessionService.getSession()" class="btn btn-outline-danger me-2"  
-        data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cesta
+        <button *ngIf="sessionService.getSession()" class="btn btn-outline-danger me-2 position-relative"  
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="getCart()">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cesta 
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">{{cartCounter}} <span class="visually-hidden">unread messages</span></span>
         </button>
         <!-- Default dropstart button -->
-        <div *ngIf="sessionService.getSession()" class="btn-group dropstart">
+        <div *ngIf="sessionService.getSession()" class="btn-group dropstart ms-2">
           <button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa fa-user" aria-hidden="true"></i> {{sessionService.getSession().username}}
           </button>
@@ -71,31 +73,43 @@
             <thead>
               <tr>
 
-                <th>#</th>
+                <th>Pizza</th>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Total</th>
+                <th><i class="fa fa-trash" aria-hidden="true"></i>
+                </th>
+                
               </tr>
 
             </thead>
 
             <tbody>
 
-              <tr>
+              <tr *ngFor="let cart of cartData">
                 <td>
-                  <img src="" alt="">
+                  <img class="thumbnail" [src]="cart.photo" alt="Pizza creado por usuario">
                 </td>
-                <td>prueba</td>
-                <td>100</td>
-                <td> 2</td>
-                <td>200</td>
+                <td>{{ cart.name }}</td>
+                <td>{{ cart.value }}€</td>
+                <td> {{ cart.quantity }}</td>
+                <td>{{ cart.value * cart.quantity }}€</td>
+                <td>
+                  <button class="btn btn-outline-danger" (click)="removeItem(cart.id, cart.name, cart.value * cart.quantity)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+                </td>
               </tr>
             </tbody>
           </table>
           <div class="justify-content-center d-flex">
-            <span> <strong>Total:</strong> 200</span>
+            <span><strong>Nº de Pizzas:</strong> {{ cartCounter }}</span>
           </div>
+          <div class="justify-content-center d-flex">
+            <span> <strong>Total:</strong> {{ total }}€</span>
+          </div>
+          
       </div>
 
       
@@ -104,7 +118,8 @@
           <i class="fa fa-times-circle" aria-hidden="true"></i>
            Close
         </button>
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-danger"
+        (click)="createOrder()">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
            Realizar Pedido
         </button>

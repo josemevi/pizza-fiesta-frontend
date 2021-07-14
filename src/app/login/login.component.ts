@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../services/authentication.service";
 import { SessionService } from "../services/session.service";
+import { CartService } from "../services/cart.service";
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router,
-    public sessionService: SessionService) { }
+    public sessionService: SessionService,
+    private cartService: CartService) { }
     
 
   ngOnInit(): void {
@@ -36,9 +38,11 @@ export class LoginComponent implements OnInit {
       
       this.authenticationService.login(this.userData)
       .subscribe(response => {
+        
         this.sessionService.createSession(response.userData);
         Swal.fire("Ahora sí", "Bienvenido " +response.userData.username+". ¿Que comemos hoy?", "success");
         this.router.navigate(['/dashboard']);
+        this.cartService.setChanges(true);
       })
 
     }else {

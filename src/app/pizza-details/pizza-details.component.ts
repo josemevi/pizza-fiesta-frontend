@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PizzasService } from "../services/pizzas.service";
 import { SessionService } from "../services/session.service";
+import { CartService } from "../services/cart.service";
+
 import { Router, ActivatedRoute } from "@angular/router";
 import Swal from 'sweetalert2'; 
 @Component({
@@ -18,7 +20,8 @@ export class PizzaDetailsComponent implements OnInit {
   constructor(private router: Router,
     public sessionService: SessionService,
     private pizzasService: PizzasService,
-    private activatedroute: ActivatedRoute) { }
+    private activatedroute: ActivatedRoute,
+    private cartService: CartService) { }
 
     ngOnInit(): void {
       this.activatedroute.paramMap.subscribe(params => {
@@ -29,29 +32,35 @@ export class PizzaDetailsComponent implements OnInit {
     }
   
     deletePizza(id: any, name: any): void{
+
+      if(this.sessionService.validateSession()){
   
-      Swal.fire({
-        title: '¿Estás Segur@?',
-        text: "¡¿Borraras "+name+" permanentemente?!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#E2001A',
-        cancelButtonColor: '#db5bd',
-        confirmButtonText: 'Si, sin remordimientos',
-        cancelButtonText: '¡No, Espera!'
-      }).then((result) => {
-        if (result.isConfirmed) {
+        Swal.fire({
+          title: '¿Estás Segur@?',
+          text: "¡¿Borraras "+name+" permanentemente?!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#E2001A',
+          cancelButtonColor: '#db5bd',
+          confirmButtonText: 'Si, sin remordimientos',
+          cancelButtonText: '¡No, Espera!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+    
+            this.pizzasService.deletePizza(id, this.sessionService.getSession().id)
+            .subscribe(response => {
+              Swal.fire(
+                '¡Pizza Eliminada!',
+                name +' Será recordada para siempre.',
+                'success'
+              )
+              window.history.back();
+            })
+           
+          }
+        })
   
-          //ep aqui
-  
-  
-          Swal.fire(
-            '¡Pizza Eliminada!',
-            name +' Será recordada para siempre.',
-            'success'
-          )
-        }
-      })
+      }
   
     }
   
@@ -64,8 +73,31 @@ export class PizzaDetailsComponent implements OnInit {
       })
     }
   
-    addToCart(pizzaId: any): void {
-      console.log(pizzaId);
+    addToCart(pizzaId: any, pizzaName: any): void {
+
+      if(this.sessionService.validateSession()){
+  
+        let cartData: any = {
+          user_id : this.sessionService.getSession().id,
+          pizza_id: pizzaId
+        }
+  
+        this.cartService.createCartEntry(cartData)
+          .subscribe(response => { 
+            this.cartService.setChanges(true);
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `¡${pizzaName} se ha agregado a tu cesta!`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+          })
+        
+        
+  
+      }
+      
     }
     
 }

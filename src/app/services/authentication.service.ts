@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from "../../environments/environment";
 
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import Swal from 'sweetalert2';
@@ -36,8 +36,10 @@ export class AuthenticationService {
     return this.http.post(`${this.apiPath}register.php`, userData).pipe(
       catchError(e => {
         console.error(e.error);
-        if(e.error.status == 400){
+        if(e.error.status == 400 && !e.error.errors.email){
           Swal.fire("Ups", "El nombre de usuario o email ingresados ya estan en uso. Por favor prueba con uno distinto.", "error");
+        }else {
+          Swal.fire("Ups", "Parece que esa no es una dirección de correo valida. Debe ser formato: correo@dominio.com", "error");
         }
         return throwError(e);
       })
