@@ -66,7 +66,7 @@ export class PizzasService {
   }
 
   deletePizza(id: any, user_id: any): Observable<any> {
-    console.log(`${this.apiPath}deletePizza.php?id=${id}`);
+    
     return this.http.delete(`${this.apiPath}deletePizza.php?id=${id}&user_id=${user_id}`).pipe(
       catchError(e => {
         console.error(e.error);

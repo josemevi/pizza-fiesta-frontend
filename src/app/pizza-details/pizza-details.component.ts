@@ -67,7 +67,7 @@ export class PizzaDetailsComponent implements OnInit {
     getPizzasById(id: any): void{
       this.pizzasService.getPizzaById(id)
       .subscribe(response => {
-        console.log(response);
+        
         this.pizza = response.pizzaData;
   
       })

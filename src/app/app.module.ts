@@ -14,6 +14,8 @@ import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
 import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
 
+import { HeaderInterceptor } from "./interceptors/header.interceptor";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

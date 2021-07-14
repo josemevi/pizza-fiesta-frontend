@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: "http://localhost/pizza-fiesta-backend/api/v1/",
+  apiURL: "https://pizza-fiesta-api.000webhostapp.com/api/v1/",
 };
 
 /*

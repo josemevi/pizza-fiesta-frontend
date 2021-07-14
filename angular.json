@@ -102,6 +102,10 @@
           "options": {
             "browserTarget": "pizza-fiesta-frontend:build"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }

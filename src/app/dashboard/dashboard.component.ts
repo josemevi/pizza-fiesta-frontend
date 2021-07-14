@@ -63,8 +63,6 @@ export class DashboardComponent implements OnInit {
 
       this.lastPizzas = response.pizzaData;
 
-      console.log(this.lastPizzas);
-
       if(this.lastPizzas.length > 4){
         this.lastPizzas = this.lastPizzas.slice(0, 4);
       }

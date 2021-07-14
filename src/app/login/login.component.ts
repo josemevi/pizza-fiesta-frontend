@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         
         this.sessionService.createSession(response.userData);
-        Swal.fire("Ahora sí", "Bienvenido " +response.userData.username+". ¿Que comemos hoy?", "success");
+        Swal.fire("Ahora sí", "Bienvenido " +response.userData.username+". ¿Qué comemos hoy?", "success");
         this.router.navigate(['/dashboard']);
         this.cartService.setChanges(true);
       })
